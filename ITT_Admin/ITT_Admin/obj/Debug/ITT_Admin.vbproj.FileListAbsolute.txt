@@ -1,0 +1,33 @@
+c:\users\sam mcclain\documents\visual studio 2012\Projects\ITT_Admin\ITT_Admin\bin\Debug\ITT_Admin.exe.config
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\bin\Debug\ITT_Admin.exe
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\bin\Debug\ITT_Admin.pdb
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\bin\Debug\ITT_Admin.xml
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.Resources.resources
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.vbproj.GenerateResource.Cache
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.exe
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.xml
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.pdb
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\bin\Debug\Database1.sdf
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.frmLoginScreen.resources
+C:\Users\Sam McClain\Desktop\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\bin\Debug\ITT_Admin.exe.config
+C:\Users\Sam McClain\Desktop\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.exe
+C:\Users\Sam McClain\Desktop\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.xml
+C:\Users\Sam McClain\Desktop\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.pdb
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.Timesheet.resources
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.ChangePwd.resources
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.Admin.resources
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\bin\Debug\ITT_Admin.exe.config
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.exe
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.xml
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.pdb
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\bin\Debug\Database1.sdf
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\bin\Debug\ITT_Admin.exe
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\bin\Debug\ITT_Admin.pdb
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\bin\Debug\ITT_Admin.xml
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.Admin.resources
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.ChangePwd.resources
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.frmLoginScreen.resources
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.Resources.resources
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.Timesheet.resources
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.UserAdministration.resources
+E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.vbproj.GenerateResource.Cache
