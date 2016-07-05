@@ -32,11 +32,20 @@ Public Class frmLoginScreen
                     userPassword = dgLogin.Rows(rowindex).Cells(1).Value
                     username = dgLogin.Rows(rowindex).Cells(2).Value
                     userid = txtUserID.Text
+                    '  row.Cells.Item("chngpass_flag").Value = "Y"
+                    ' MsgBox(row.Cells.Item("chngpass_flag").Value.ToString)
                     If row.Cells.Item("chngpass_flag").Value.Equals("Y") Then
                         'ChangePwd.Show()
                         chngpasswd_flag = row.Cells.Item("chngpass_flag").Value
+                    Else
+                        'set if chngpaswd not equal to Y
+                        chngpasswd_flag = "N"
+
                     End If
-                    Exit For
+
+                    'MsgBox(dgLogin.ColumnCount.ToString)
+                   
+
                     ' Else
                     'MsgBox("you got a prob yo")
                     '  Exit For
@@ -49,6 +58,7 @@ Public Class frmLoginScreen
             'changed this to one big if statement because timesheet would be called and you could update even
             'though you needed to change your password.  Admin and Timesheet are now called in ChangePwd after
             'the users password is changed.
+            'MsgBox(chngpasswd_flag)
 
             If chngpasswd_flag.Equals("Y") Then
                 ChangePwd.Show()
@@ -72,6 +82,7 @@ Public Class frmLoginScreen
 
     Private Sub frmLoginScreen_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'dgLogin.Visible = False
+        LoginTableAdapter.Update(Me.Database1DataSet1.login)
         Me.LoginTableAdapter.Fill(Me.Database1DataSet1.login)
         'TODO: This line of code loads data into the 'Database1DataSet11.login' table. You can move, or remove it, as needed.
         ' Me.LoginTableAdapter.Fill(Me.Database1DataSet11.login)
@@ -103,5 +114,13 @@ Public Class frmLoginScreen
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
 
+    End Sub
+
+    Public Sub chkAdmin()
+        Dim row As DataRow = Database1DataSet1.Tables("login").NewRow()
+
+
+
+       
     End Sub
 End Class

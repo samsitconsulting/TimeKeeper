@@ -149,7 +149,7 @@ FROM         timesheet</CommandText>
   <xs:element name="Database1DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="Database1DataSet1" msprop:Generator_UserDSName="Database1DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="login" msprop:Generator_TableClassName="loginDataTable" msprop:Generator_TableVarName="tablelogin" msprop:Generator_RowChangedName="loginRowChanged" msprop:Generator_TablePropName="login" msprop:Generator_RowDeletingName="loginRowDeleting" msprop:Generator_RowChangingName="loginRowChanging" msprop:Generator_RowEvHandlerName="loginRowChangeEventHandler" msprop:Generator_RowDeletedName="loginRowDeleted" msprop:Generator_RowClassName="loginRow" msprop:Generator_UserTableName="login" msprop:Generator_RowEvArgName="loginRowChangeEvent">
+        <xs:element name="login" msprop:Generator_TableClassName="loginDataTable" msprop:Generator_TableVarName="tablelogin" msprop:Generator_TablePropName="login" msprop:Generator_RowDeletingName="loginRowDeleting" msprop:Generator_RowChangingName="loginRowChanging" msprop:Generator_RowEvHandlerName="loginRowChangeEventHandler" msprop:Generator_RowDeletedName="loginRowDeleted" msprop:Generator_UserTableName="login" msprop:Generator_RowChangedName="loginRowChanged" msprop:Generator_RowEvArgName="loginRowChangeEvent" msprop:Generator_RowClassName="loginRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="user_id" msprop:Generator_ColumnVarNameInTable="columnuser_id" msprop:Generator_ColumnPropNameInRow="user_id" msprop:Generator_ColumnPropNameInTable="user_idColumn" msprop:Generator_UserColumnName="user_id">
@@ -180,10 +180,11 @@ FROM         timesheet</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="isAdmin" msprop:Generator_ColumnVarNameInTable="columnisAdmin" msprop:Generator_ColumnPropNameInRow="isAdmin" msprop:Generator_ColumnPropNameInTable="isAdminColumn" msprop:Generator_UserColumnName="isAdmin" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="timesheet" msprop:Generator_TableClassName="timesheetDataTable" msprop:Generator_TableVarName="tabletimesheet" msprop:Generator_TablePropName="timesheet" msprop:Generator_RowDeletingName="timesheetRowDeleting" msprop:Generator_RowChangingName="timesheetRowChanging" msprop:Generator_RowEvHandlerName="timesheetRowChangeEventHandler" msprop:Generator_RowDeletedName="timesheetRowDeleted" msprop:Generator_UserTableName="timesheet" msprop:Generator_RowChangedName="timesheetRowChanged" msprop:Generator_RowEvArgName="timesheetRowChangeEvent" msprop:Generator_RowClassName="timesheetRow">
+        <xs:element name="timesheet" msprop:Generator_TableClassName="timesheetDataTable" msprop:Generator_TableVarName="tabletimesheet" msprop:Generator_RowChangedName="timesheetRowChanged" msprop:Generator_TablePropName="timesheet" msprop:Generator_RowDeletingName="timesheetRowDeleting" msprop:Generator_RowChangingName="timesheetRowChanging" msprop:Generator_RowEvHandlerName="timesheetRowChangeEventHandler" msprop:Generator_RowDeletedName="timesheetRowDeleted" msprop:Generator_RowClassName="timesheetRow" msprop:Generator_UserTableName="timesheet" msprop:Generator_RowEvArgName="timesheetRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="time_id" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntime_id" msprop:Generator_ColumnPropNameInRow="time_id" msprop:Generator_ColumnPropNameInTable="time_idColumn" msprop:Generator_UserColumnName="time_id" type="xs:string" />

@@ -44,11 +44,17 @@ Partial Class frmLoginScreen
         Me.FillByToolStrip = New System.Windows.Forms.ToolStrip()
         Me.FillByToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.LoginTableAdapter = New ITT_Admin.Database1DataSet1TableAdapters.loginTableAdapter()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.UseridDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PasswordDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ChngpassflagDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgLogin, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LoginBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Database1DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FillByToolStrip.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtUserID
@@ -195,7 +201,7 @@ Partial Class frmLoginScreen
         Me.FillByToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FillByToolStripButton})
         Me.FillByToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.FillByToolStrip.Name = "FillByToolStrip"
-        Me.FillByToolStrip.Size = New System.Drawing.Size(419, 25)
+        Me.FillByToolStrip.Size = New System.Drawing.Size(411, 25)
         Me.FillByToolStrip.TabIndex = 11
         Me.FillByToolStrip.Text = "FillByToolStrip"
         Me.FillByToolStrip.Visible = False
@@ -211,14 +217,50 @@ Partial Class frmLoginScreen
         '
         Me.LoginTableAdapter.ClearBeforeFill = True
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.AutoGenerateColumns = False
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UseridDataGridViewTextBoxColumn, Me.PasswordDataGridViewTextBoxColumn1, Me.NameDataGridViewTextBoxColumn1, Me.ChngpassflagDataGridViewTextBoxColumn})
+        Me.DataGridView1.DataSource = Me.LoginBindingSource
+        Me.DataGridView1.Location = New System.Drawing.Point(177, 326)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(240, 150)
+        Me.DataGridView1.TabIndex = 12
+        '
+        'UseridDataGridViewTextBoxColumn
+        '
+        Me.UseridDataGridViewTextBoxColumn.DataPropertyName = "user_id"
+        Me.UseridDataGridViewTextBoxColumn.HeaderText = "user_id"
+        Me.UseridDataGridViewTextBoxColumn.Name = "UseridDataGridViewTextBoxColumn"
+        '
+        'PasswordDataGridViewTextBoxColumn1
+        '
+        Me.PasswordDataGridViewTextBoxColumn1.DataPropertyName = "password"
+        Me.PasswordDataGridViewTextBoxColumn1.HeaderText = "password"
+        Me.PasswordDataGridViewTextBoxColumn1.Name = "PasswordDataGridViewTextBoxColumn1"
+        '
+        'NameDataGridViewTextBoxColumn1
+        '
+        Me.NameDataGridViewTextBoxColumn1.DataPropertyName = "name"
+        Me.NameDataGridViewTextBoxColumn1.HeaderText = "name"
+        Me.NameDataGridViewTextBoxColumn1.Name = "NameDataGridViewTextBoxColumn1"
+        '
+        'ChngpassflagDataGridViewTextBoxColumn
+        '
+        Me.ChngpassflagDataGridViewTextBoxColumn.DataPropertyName = "chngpass_flag"
+        Me.ChngpassflagDataGridViewTextBoxColumn.HeaderText = "chngpass_flag"
+        Me.ChngpassflagDataGridViewTextBoxColumn.Name = "ChngpassflagDataGridViewTextBoxColumn"
+        '
         'frmLoginScreen
         '
         Me.AcceptButton = Me.btnLogin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CausesValidation = False
-        Me.ClientSize = New System.Drawing.Size(415, 340)
+        Me.ClientSize = New System.Drawing.Size(411, 336)
         Me.ControlBox = False
+        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.FillByToolStrip)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.lblPass)
@@ -243,6 +285,7 @@ Partial Class frmLoginScreen
         CType(Me.Database1DataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.FillByToolStrip.ResumeLayout(False)
         Me.FillByToolStrip.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -267,5 +310,10 @@ Partial Class frmLoginScreen
     Friend WithEvents PasswordDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents NameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents chngpass_flag As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents UseridDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PasswordDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents NameDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ChngpassflagDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class

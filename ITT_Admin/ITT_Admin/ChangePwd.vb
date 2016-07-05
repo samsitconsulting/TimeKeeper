@@ -26,7 +26,7 @@ Public Class ChangePwd
         End With
 
         'LEAVE FOR TESTING.  Used to make sure we're looking at the correct record
-        MsgBox("Record: " + " Userid: " + userid + " user pass: " + userPassword + " user name: " + username + " change flag: " + chngpasswd_flag)
+        ' MsgBox("Record: " + " Userid: " + userid + " user pass: " + userPassword + " user name: " + username + " change flag: " + chngpasswd_flag)
         'REMOVE AFTER TESTING ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -57,7 +57,7 @@ Public Class ChangePwd
 
             'set the new row record values.  after testing set chngpass_flag to 'N'
             row.Item("password") = txtNewPwd.Text
-            row.Item("chngpass_flag") = chngpasswd_flag
+            row.Item("chngpass_flag") = "N"
 
             'write the new rows to the "temp" table (table you see when we drag it to the screen)
             Database1DataSet1.Tables("login").Rows.Add(row)
