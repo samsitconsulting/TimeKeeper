@@ -98,6 +98,13 @@
     <Compile Include="ChangePwd.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DBFunction.vb" />
+    <Compile Include="Database_Template.Designer.vb">
+      <DependentUpon>Database_Template.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Database_Template.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UserAdministration.Designer.vb">
       <DependentUpon>UserAdministration.vb</DependentUpon>
     </Compile>
@@ -148,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePwd.resx">
       <DependentUpon>ChangePwd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Database_Template.resx">
+      <DependentUpon>Database_Template.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLoginScreen.resx">
       <DependentUpon>frmLoginScreen.vb</DependentUpon>

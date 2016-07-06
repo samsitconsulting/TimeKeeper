@@ -31,3 +31,5 @@ E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.R
 E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.Timesheet.resources
 E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.UserAdministration.resources
 E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.vbproj.GenerateResource.Cache
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.UserAdministration.resources
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.Database_Template.resources
