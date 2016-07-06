@@ -48,14 +48,27 @@ Public Class DBFunction
     End Sub
 
     Public Shared Sub updatePassword(user_id As String, password As String)
+        Try
+            Dim updateCmd As SqlCeCommand = conn.CreateCommand()
+            updateCmd.CommandText = "UPDATE login SET password = '" & password & "', chngpass_flag ='N'" + _
+                " WHERE user_id = '" & user_id & "'"
 
-        Dim updateCmd As SqlCeCommand = conn.CreateCommand()
-        updateCmd.CommandText = "UPDATE login SET password = '" & password & "', chngpass_flag ='N'" + _
-            " WHERE user_id = '" & user_id & "'"
+            MsgBox(updateCmd.CommandText)
+           
+            adp.UpdateCommand = updateCmd
+
+            adp.UpdateCommand.ExecuteNonQuery()
+
+            ds.Clear()
+            adp.Fill(ds)
+
+            conn.Close()
 
 
-        adp.UpdateCommand = updateCmd
-        adp.UpdateCommand.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+          
+        End Try
 
     End Sub
 
@@ -95,6 +108,9 @@ Public Class DBFunction
                 For Each row As DataRow In ds.Tables.Item(0).Rows
                     chngpasswd_flag = row.Item("chngpass_flag").ToString()
                     username = row.Item("name").ToString()
+                    userPassword = row.Item("password").ToString()
+                    userid = row.Item("user_id").ToString()
+                    rowindex = ds.Tables.Item(0).Rows.IndexOf(row)
                     If row.Item("isAdmin").Equals("Y") Then
                         isAdmin = True
                     Else
@@ -140,7 +156,7 @@ Public Class DBFunction
 
     Public Shared Function changePassword(ds As DataSet)
         Try
- 
+
             For Each row As DataRow In ds.Tables.Item(0).Rows
                 chngpasswd_flag = row.Item("chngpass_flag").ToString()
 
