@@ -60,6 +60,40 @@ Public Class DBFunction
 
     End Sub
 
+    Public Shared Sub updateUser(user_id As String,
+                          password As String,
+                          name As String,
+                          chngpass_flag As String)
+
+
+        db_open()
+        Try
+            Dim updateCmd As SqlCeCommand = conn.CreateCommand()
+            updateCmd.CommandText = "UPDATE login SET password = '" & password & "'," & _
+                                                    " name = '" & name & "'," & _
+                                                    " chngpass_flag = '" & chngpass_flag & "'" & _
+                " WHERE user_id = '" & user_id & "'"
+
+            MsgBox(updateCmd.CommandText)
+
+            adp.UpdateCommand = updateCmd
+
+            adp.UpdateCommand.ExecuteNonQuery()
+
+            ds.Clear()
+            adp.Fill(ds)
+
+            db_close()
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        End Try
+
+        db_close()
+
+    End Sub
     Public Shared Sub updatePassword(user_id As String, password As String)
 
         db_open()
@@ -206,6 +240,138 @@ Public Class DBFunction
         End Try
 
     End Function
+
+
+    Public Shared Sub insertTime(user_id As String,
+                          time_in As Date,
+                          time_out As Date,
+                          work_date As Date,
+                          created_date As Date
+                          )
+
+        db_open()
+
+        Dim insertCmd As SqlCeCommand = conn.CreateCommand
+
+        ' Create the InsertCommand.
+        insertCmd = New SqlCeCommand( _
+            "insert into timesheet(user_id,time_in,time_out,work_date,created_date) " & _
+            "values ('" & user_id & "','" & time_in & "','" & time_out & "','" & work_date & "','" & created_date & "')", conn)
+
+
+        adp.InsertCommand = insertCmd
+        adp.InsertCommand.ExecuteNonQuery()
+
+        db_close()
+
+    End Sub
+
+    Public Shared Sub updateTime(user_id As String,
+                                 time_in As Date,
+                                 time_out As Date,
+                                 work_date As Date)
+
+
+        db_open()
+        Try
+            Dim updateCmd As SqlCeCommand = conn.CreateCommand()
+            updateCmd.CommandText = "UPDATE timesheet SET time_out = '" & time_out & "'" & _
+                " WHERE user_id = '" & user_id & "'" & _
+                " and time_in = '" & time_in & "'" & _
+                " and work_date = '" & work_date & "'"
+
+            MsgBox(updateCmd.CommandText)
+
+            adp.UpdateCommand = updateCmd
+
+            adp.UpdateCommand.ExecuteNonQuery()
+
+            ds.Clear()
+            adp.Fill(ds)
+
+            db_close()
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        End Try
+
+        db_close()
+
+    End Sub
+
+
+    Public Shared Sub adjustTime(user_id As String,
+                                 time_in As Date,
+                                 time_out As Date,
+                                 work_date As Date)
+
+
+        db_open()
+        Try
+            Dim updateCmd As SqlCeCommand = conn.CreateCommand()
+            updateCmd.CommandText = "UPDATE timesheet SET time_out = '" & time_out & "', time_in = '" & time_in & "'" & _
+                " WHERE user_id = '" & user_id & "'" & _
+                " and work_date = '" & work_date & "'"
+
+            MsgBox(updateCmd.CommandText)
+
+            adp.UpdateCommand = updateCmd
+
+            adp.UpdateCommand.ExecuteNonQuery()
+
+            ds.Clear()
+            adp.Fill(ds)
+
+            db_close()
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        End Try
+
+        db_close()
+
+    End Sub
+
+
+
+    Public Shared Function getTime(user_id As String, work_date As Date)
+        db_open()
+        Try
+            Dim selectCmd As SqlCeCommand = conn.CreateCommand
+            selectCmd.CommandText = "SELECT * FROM timesheet where user_id = '" & user_id & "' and work_date = '" & work_date & "'"
+            adp.SelectCommand = selectCmd
+            adp.Fill(ds)
+
+            If ds.Tables.Item(0).Rows.Count < 1 Then
+                timeIn = ""
+                timeOut = ""
+                workDate = ""
+                Return False
+            Else
+
+                For Each row As DataRow In ds.Tables.Item(0).Rows
+                    timeIn = row.Item("time_in").ToString()
+                    timeOut = row.Item("time_out").ToString()
+                    workDate = row.Item("work_date").ToString()
+
+                Next
+                Return True
+            End If
+
+            db_close()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return False
+
+        End Try
+
+    End Function
+
     '        Try
     '    Dim strDataSource As String
     '            strDataSource = "" & _

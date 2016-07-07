@@ -5,6 +5,8 @@
     Public Shared userid As String
     Public Shared isAdmin As Boolean = False
     Public Shared rowindex As Integer
-
+    Public Shared timeIn As Date
+    Public Shared timeOut As Date
+    Public Shared workDate As Date
 
 End Class
