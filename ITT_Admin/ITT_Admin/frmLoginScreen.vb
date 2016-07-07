@@ -7,7 +7,7 @@ Public Class frmLoginScreen
 
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        db_close()
+        '      db_close()
         Me.Close()
     End Sub
 
@@ -41,7 +41,7 @@ Public Class frmLoginScreen
     End Sub
 
     Private Sub frmLoginScreen_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        db_connect()
+        'db_connect()
 
     End Sub
 

@@ -1,28 +1,39 @@
 ﻿Imports System.Data.SqlServerCe
 Imports ITT_Admin.Variables
 Public Class DBFunction
-    Public Shared conn As New SqlCeConnection
-
-    Public Shared strDataSource As String = "" & _
+    Public Shared conn As New SqlCeConnection("" & _
             "Data Source = C:\Users\" & _
             "Sam McClain\" & _
             "Documents\" & _
             "Visual Studio 2012\" & _
-            "Projects\ITT_Admin\ITT_Admin\Database1.sdf"
+            "Projects\ITT_Admin\ITT_Admin\Database1.sdf")
+
+    ' Public Shared strDataSource As String = 
 
     Public Shared adp As New SqlCeDataAdapter()
     Public Shared ds As New DataSet
 
 
-    Public Shared Sub db_connect()
+    Public Shared Sub db_open()
 
-        conn.ConnectionString = strDataSource
-        conn.Open()
+        '     conn.ConnectionString = strDataSource
+        If conn.State.ToString() = "Open" Then
+            conn.Close()
+            conn.Open()
+        Else
+
+            conn.Open()
+
+        End If
+
 
     End Sub
 
     Public Shared Sub db_close()
-        conn.Close()
+        If conn.State.ToString() = "Open" Then
+            conn.Close()
+        End If
+
 
     End Sub
 
@@ -32,6 +43,7 @@ Public Class DBFunction
                           chngpass_flag As String,
                           isAdmin As String)
 
+        db_open()
 
         Dim insertCmd As SqlCeCommand = conn.CreateCommand
 
@@ -44,17 +56,20 @@ Public Class DBFunction
         adp.InsertCommand = insertCmd
         adp.InsertCommand.ExecuteNonQuery()
 
+        db_close()
 
     End Sub
 
     Public Shared Sub updatePassword(user_id As String, password As String)
+
+        db_open()
         Try
             Dim updateCmd As SqlCeCommand = conn.CreateCommand()
             updateCmd.CommandText = "UPDATE login SET password = '" & password & "', chngpass_flag ='N'" + _
                 " WHERE user_id = '" & user_id & "'"
 
             MsgBox(updateCmd.CommandText)
-           
+
             adp.UpdateCommand = updateCmd
 
             adp.UpdateCommand.ExecuteNonQuery()
@@ -62,12 +77,12 @@ Public Class DBFunction
             ds.Clear()
             adp.Fill(ds)
 
-            conn.Close()
+            db_close()
 
 
         Catch ex As Exception
             MsgBox(ex.Message)
-          
+
         End Try
 
     End Sub
@@ -77,24 +92,31 @@ Public Class DBFunction
     End Sub
 
     Public Shared Sub selectAllCmd(table As String)
+        db_open()
 
         Dim selectCmd As SqlCeCommand = conn.CreateCommand
         selectCmd.CommandText = "SELECT * FROM " & table
         adp.SelectCommand = selectCmd
         adp.Fill(ds)
+        db_close()
+
     End Sub
 
     Public Shared Sub selectAllCmd(table As String, where As String)
+        db_open()
 
         Dim selectCmd As SqlCeCommand = conn.CreateCommand
         selectCmd.CommandText = "SELECT * FROM " & table
         adp.SelectCommand = selectCmd
         adp.Fill(ds)
+        db_close()
+
     End Sub
 
 
 
     Public Shared Function isValidUser(user_id As String, password As String)
+        db_open()
         Try
             Dim selectCmd As SqlCeCommand = conn.CreateCommand
             selectCmd.CommandText = "SELECT * FROM login where user_id = '" & user_id & "' and password = '" & password & "'"
@@ -119,6 +141,9 @@ Public Class DBFunction
                 Next
                 Return True
             End If
+
+            db_close()
+
         Catch ex As Exception
             MsgBox(ex.Message)
             Return False
@@ -129,6 +154,7 @@ Public Class DBFunction
 
 
     Public Shared Function changePassword(user_id As String, password As String)
+        db_open()
         Try
             Dim selectCmd As SqlCeCommand = conn.CreateCommand
             selectCmd.CommandText = "SELECT chngpass_flag FROM login where user_id = '" & user_id & "' and password = '" & password & "'"
@@ -141,12 +167,15 @@ Public Class DBFunction
 
             Next
             If chngpasswd_flag.Equals("N") Then
+                db_close()
                 Return False
             Else
+                db_close()
                 Return True
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
+            db_close()
             Return False
 
         End Try
@@ -155,6 +184,7 @@ Public Class DBFunction
 
 
     Public Shared Function changePassword(ds As DataSet)
+        db_open()
         Try
 
             For Each row As DataRow In ds.Tables.Item(0).Rows
@@ -162,12 +192,15 @@ Public Class DBFunction
 
             Next
             If chngpasswd_flag.Equals("N") Then
+                db_close()
                 Return False
             Else
+                db_close()
                 Return True
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
+            db_close()
             Return False
 
         End Try
