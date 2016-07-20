@@ -244,7 +244,6 @@ Public Class DBFunction
 
     Public Shared Sub insertTime(user_id As String,
                           time_in As Date,
-                          time_out As Date,
                           work_date As Date,
                           created_date As Date
                           )
@@ -252,11 +251,10 @@ Public Class DBFunction
         db_open()
 
         Dim insertCmd As SqlCeCommand = conn.CreateCommand
-
         ' Create the InsertCommand.
         insertCmd = New SqlCeCommand( _
-            "insert into timesheet(user_id,time_in,time_out,work_date,created_date) " & _
-            "values ('" & user_id & "','" & time_in & "','" & time_out & "','" & work_date & "','" & created_date & "')", conn)
+           "insert into timesheet(user_id,time_in,time_out,work_date,created_date) " & _
+           "values ('" & user_id & "','" & time_in & "',NULL,'" & work_date & "','" & created_date & "')", conn)
 
 
         adp.InsertCommand = insertCmd
@@ -341,8 +339,15 @@ Public Class DBFunction
     Public Shared Function getTime(user_id As String, work_date As Date)
         db_open()
         Try
+
+            Dim sYear As String = work_date.Year.ToString()
+            Dim sMonth As String = work_date.Month.ToString().PadLeft(2, "0")
+            Dim sDay As String = work_date.Day.ToString().PadLeft(2, "0")
+
+            Dim caseTime As String = sMonth & "/" & sDay & "/" & sYear
+
             Dim selectCmd As SqlCeCommand = conn.CreateCommand
-            selectCmd.CommandText = "SELECT * FROM timesheet where user_id = '" & user_id & "' and work_date = '" & work_date & "'"
+            selectCmd.CommandText = "SELECT * FROM timesheet where user_id = '" & user_id & "' and CONVERT(nvarchar(10),work_date,101)  = CONVERT(nvarchar(10),'" & caseTime & "',101)"
             adp.SelectCommand = selectCmd
             adp.Fill(ds)
 
@@ -354,9 +359,9 @@ Public Class DBFunction
             Else
 
                 For Each row As DataRow In ds.Tables.Item(0).Rows
-                    timeIn = row.Item("time_in").ToString()
-                    timeOut = row.Item("time_out").ToString()
-                    workDate = row.Item("work_date").ToString()
+                    timeIn = row.Item("time_in").ToString
+                    timeOut = row.Item("time_out").ToString
+                    workDate = row.Item("work_date").ToString
 
                 Next
                 Return True

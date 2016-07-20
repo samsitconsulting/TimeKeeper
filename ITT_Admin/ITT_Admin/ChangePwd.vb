@@ -16,10 +16,12 @@ Public Class ChangePwd
             If txtNewPwd.Text = txtNewPwdChk.Text And Not txtNewPwd.Text = "" Then
                 MsgBox(userid)
                 updatePassword(userid, txtNewPwdChk.Text)
+                Me.Visible = False
+
                 If isAdmin Then
                     Admin.Show()
                 Else
-                    UserAdministration.Show()
+                    Timesheet.Show()
                 End If
             Else
                 MsgBox("New Passwords do not match")
@@ -27,6 +29,8 @@ Public Class ChangePwd
         Else
             MsgBox("Current Password incorrect")
         End If
+
+
     End Sub
 
   
