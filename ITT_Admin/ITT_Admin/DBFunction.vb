@@ -25,7 +25,7 @@ Public Class DBFunction
             conn.Open()
 
         End If
-
+        ds.Clear()
 
     End Sub
 
@@ -61,15 +61,15 @@ Public Class DBFunction
     End Sub
 
     Public Shared Sub updateUser(user_id As String,
-                          password As String,
                           name As String,
-                          chngpass_flag As String)
+                          chngpass_flag As String,
+                          is_admin As String)
 
 
         db_open()
         Try
             Dim updateCmd As SqlCeCommand = conn.CreateCommand()
-            updateCmd.CommandText = "UPDATE login SET password = '" & password & "'," & _
+            updateCmd.CommandText = "UPDATE login SET isAdmin = '" & is_admin & "'," & _
                                                     " name = '" & name & "'," & _
                                                     " chngpass_flag = '" & chngpass_flag & "'" & _
                 " WHERE user_id = '" & user_id & "'"
@@ -136,6 +136,21 @@ Public Class DBFunction
 
     End Sub
 
+    Public Shared Function getUsers()
+        db_open()
+
+        Dim selectCmd As SqlCeCommand = conn.CreateCommand
+        selectCmd.CommandText = "SELECT * FROM login"
+        adp.SelectCommand = selectCmd
+        adp.Fill(ds)
+        db_close()
+
+
+        Return ds
+
+
+    End Function
+
     Public Shared Sub selectAllCmd(table As String, where As String)
         db_open()
 
@@ -186,6 +201,131 @@ Public Class DBFunction
 
     End Function
 
+
+
+    Public Shared Function isValidUser(user_id As String)
+        db_open()
+        ds.Clear()
+
+        Try
+            Dim selectCmd As SqlCeCommand = conn.CreateCommand
+            selectCmd.CommandText = "SELECT * FROM login where user_id = '" & user_id & "'"
+            adp.SelectCommand = selectCmd
+            adp.Fill(ds)
+
+            If ds.Tables.Item(0).Rows.Count < 1 Then
+                Return False
+            Else
+                Return True
+            End If
+
+            db_close()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return False
+
+        End Try
+
+    End Function
+
+    Public Shared Function isUserAdmin(vuserid As String)
+
+        'MsgBox(vuserid)
+        db_open()
+        ds.Clear()
+        Try
+            Dim selectCmd As SqlCeCommand = conn.CreateCommand
+            selectCmd.CommandText = "SELECT isAdmin FROM login where user_id = '" & vuserid & "'"
+            adp.SelectCommand = selectCmd
+            ' MsgBox(selectCmd.CommandText)
+
+            adp.Fill(ds)
+            'MsgBox(ds.Tables.Item(0).Rows.Count)
+            If ds.Tables.Item(0).Rows.Count < 1 Then
+                Return "N"
+            Else
+
+                For Each row As DataRow In ds.Tables.Item(0).Rows
+
+
+                    Return row.Item("isAdmin").ToString
+
+
+                Next
+
+            End If
+
+            db_close()
+            Return "N"
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return "N"
+
+        End Try
+
+    End Function
+
+
+
+    Public Shared Function getUserId(vusername As String)
+        db_open()
+        Try
+            Dim selectCmd As SqlCeCommand = conn.CreateCommand
+            selectCmd.CommandText = "SELECT * FROM login where name = '" & vusername & "'"
+            adp.SelectCommand = selectCmd
+            adp.Fill(ds)
+
+            If ds.Tables.Item(0).Rows.Count < 1 Then
+                Return ""
+            Else
+
+                For Each row As DataRow In ds.Tables.Item(0).Rows
+
+                    Return row.Item("user_id").ToString
+
+                Next
+
+            End If
+
+            db_close()
+            Return ""
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return ""
+        End Try
+
+    End Function
+
+    Public Shared Function getChangePassword(vuserid As String)
+        db_open()
+        ds.Clear()
+        Try
+            Dim selectCmd As SqlCeCommand = conn.CreateCommand
+            selectCmd.CommandText = "SELECT * FROM login where user_id = '" & vuserid & "'"
+            adp.SelectCommand = selectCmd
+            ' MsgBox(selectCmd.CommandText)
+            adp.Fill(ds)
+
+            If ds.Tables.Item(0).Rows.Count < 1 Then
+                Return "N"
+            Else
+
+                For Each row As DataRow In ds.Tables.Item(0).Rows
+                    Return row.Item("chngpass_flag").ToString()
+                Next
+
+            End If
+
+            db_close()
+            Return "N"
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return "N"
+
+        End Try
+
+    End Function
 
     Public Shared Function changePassword(user_id As String, password As String)
         db_open()
@@ -251,10 +391,33 @@ Public Class DBFunction
         db_open()
 
         Dim insertCmd As SqlCeCommand = conn.CreateCommand
+        insertCmd = New SqlCeCommand( _
+           "insert into timesheet(user_id,time_in,time_out,work_date,created_date) " & _
+          "values ('" & user_id & "','" & time_in & "',NULL,'" & work_date & "','" & created_date & "')", conn)
+
+
+        adp.InsertCommand = insertCmd
+        adp.InsertCommand.ExecuteNonQuery()
+
+        db_close()
+        ' insertTime(user_id, time_in, New Nullable(Of Date), work_date, created_date)
+
+    End Sub
+
+    Public Shared Sub insertTime(user_id As String,
+                         time_in As Date,
+                         time_out As Date,
+                         work_date As Date,
+                         created_date As Date
+                         )
+
+        db_open()
+
+        Dim insertCmd As SqlCeCommand = conn.CreateCommand
         ' Create the InsertCommand.
         insertCmd = New SqlCeCommand( _
            "insert into timesheet(user_id,time_in,time_out,work_date,created_date) " & _
-           "values ('" & user_id & "','" & time_in & "',NULL,'" & work_date & "','" & created_date & "')", conn)
+           "values ('" & user_id & "','" & time_in & "','" & time_out & "','" & work_date & "','" & Date.Now.ToString("MM/dd/yyyy HH:mm:ss") & "')", conn)
 
 
         adp.InsertCommand = insertCmd

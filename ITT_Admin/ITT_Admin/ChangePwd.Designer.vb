@@ -22,7 +22,6 @@ Partial Class ChangePwd
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.txtCurrentPwd = New System.Windows.Forms.TextBox()
         Me.txtNewPwd = New System.Windows.Forms.TextBox()
         Me.txtNewPwdChk = New System.Windows.Forms.TextBox()
@@ -30,12 +29,6 @@ Partial Class ChangePwd
         Me.lblNewPwd = New System.Windows.Forms.Label()
         Me.lblNewPwdChk = New System.Windows.Forms.Label()
         Me.btnOK = New System.Windows.Forms.Button()
-        Me.LoginBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Database1DataSet1 = New ITT_Admin.Database1DataSet1()
-        Me.LoginTableAdapter = New ITT_Admin.Database1DataSet1TableAdapters.loginTableAdapter()
-        Me.TableAdapterManager1 = New ITT_Admin.Database1DataSet1TableAdapters.TableAdapterManager()
-        CType(Me.LoginBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Database1DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtCurrentPwd
@@ -98,26 +91,6 @@ Partial Class ChangePwd
         Me.btnOK.Text = "OK"
         Me.btnOK.UseVisualStyleBackColor = True
         '
-        'LoginBindingSource
-        '
-        Me.LoginBindingSource.DataMember = "login"
-        Me.LoginBindingSource.DataSource = Me.Database1DataSet1
-        '
-        'Database1DataSet1
-        '
-        Me.Database1DataSet1.DataSetName = "Database1DataSet1"
-        Me.Database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'LoginTableAdapter
-        '
-        Me.LoginTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager1
-        '
-        Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager1.loginTableAdapter = Me.LoginTableAdapter
-        Me.TableAdapterManager1.UpdateOrder = ITT_Admin.Database1DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
         'ChangePwd
         '
         Me.AcceptButton = Me.btnOK
@@ -138,8 +111,6 @@ Partial Class ChangePwd
         Me.Name = "ChangePwd"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.TopMost = True
-        CType(Me.LoginBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Database1DataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -151,8 +122,4 @@ Partial Class ChangePwd
     Friend WithEvents lblNewPwd As System.Windows.Forms.Label
     Friend WithEvents lblNewPwdChk As System.Windows.Forms.Label
     Friend WithEvents btnOK As System.Windows.Forms.Button
-    Friend WithEvents LoginBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents Database1DataSet1 As ITT_Admin.Database1DataSet1
-    Friend WithEvents LoginTableAdapter As ITT_Admin.Database1DataSet1TableAdapters.loginTableAdapter
-    Friend WithEvents TableAdapterManager1 As ITT_Admin.Database1DataSet1TableAdapters.TableAdapterManager
 End Class

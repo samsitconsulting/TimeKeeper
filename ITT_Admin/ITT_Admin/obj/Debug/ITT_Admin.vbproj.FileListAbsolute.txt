@@ -33,3 +33,6 @@ E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.U
 E:\TimeKeeper-master\TimeKeeper-master\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.vbproj.GenerateResource.Cache
 C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.UserAdministration.resources
 C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.Database_Template.resources
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.AdminTimesheet.resources
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.Reports.resources
+C:\Users\Sam McClain\Documents\Visual Studio 2012\Projects\ITT_Admin\ITT_Admin\obj\Debug\ITT_Admin.vbproj.ResolveComReference.cache
