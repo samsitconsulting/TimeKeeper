@@ -8,8 +8,6 @@ Public Class UserAdministration
     End Sub
 
     Private Sub UserAdministration_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'Database1DataSet1.login' table. You can move, or remove it, as needed.
-        '  Me.LoginTableAdapter.Fill(Me.Database1DataSet1.login)
 
         Dim users As DataSet = getUsers()
 
@@ -64,16 +62,15 @@ Public Class UserAdministration
 
     End Sub
 
- 
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxUsers.SelectedIndexChanged
+    Private Sub cbxUsers_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxUsers.SelectedIndexChanged
         ' MsgBox(cbxUsers.SelectedItem.ToString)
         txtFullname.Text = cbxUsers.SelectedItem.ToString.Substring(0, cbxUsers.SelectedItem.ToString.IndexOf("(") - 1)
-        'MsgBox(txtFullname.Text)
+        '  MsgBox(txtFullname.Text)
         Dim userData As String = cbxUsers.SelectedItem.ToString.Substring(cbxUsers.SelectedItem.ToString.IndexOf("(") + 1)
         'getUserId(txtFullname.Text) 
         userData = userData.Substring(0, userData.ToString.IndexOf(")"))
         txtUserId.Text = userData
-        'MsgBox(txtUserId.Text)
+        ' MsgBox(txtUserId.Text)
 
         Dim chkData As String = isUserAdmin(txtUserId.Text)
 

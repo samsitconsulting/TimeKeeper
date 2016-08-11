@@ -74,7 +74,7 @@ Public Class DBFunction
                                                     " chngpass_flag = '" & chngpass_flag & "'" & _
                 " WHERE user_id = '" & user_id & "'"
 
-            MsgBox(updateCmd.CommandText)
+            'MsgBox(updateCmd.CommandText)
 
             adp.UpdateCommand = updateCmd
 
@@ -102,7 +102,7 @@ Public Class DBFunction
             updateCmd.CommandText = "UPDATE login SET password = '" & password & "', chngpass_flag ='N'" + _
                 " WHERE user_id = '" & user_id & "'"
 
-            MsgBox(updateCmd.CommandText)
+            'MsgBox(updateCmd.CommandText)
 
             adp.UpdateCommand = updateCmd
 
@@ -297,6 +297,37 @@ Public Class DBFunction
 
     End Function
 
+    Public Shared Function getUserName(vuserid As String)
+        db_open()
+        Try
+            Dim selectCmd As SqlCeCommand = conn.CreateCommand
+            selectCmd.CommandText = "SELECT * FROM login where user_id = '" & vuserid & "'"
+            adp.SelectCommand = selectCmd
+
+            ds.Clear()
+
+            adp.Fill(ds)
+
+            If ds.Tables.Item(0).Rows.Count < 1 Then
+                Return ""
+            Else
+
+                For Each row As DataRow In ds.Tables.Item(0).Rows
+
+                    Return row.Item("name").ToString
+
+                Next
+
+            End If
+
+            db_close()
+            Return ""
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return ""
+        End Try
+
+    End Function
     Public Shared Function getChangePassword(vuserid As String)
         db_open()
         ds.Clear()
@@ -511,7 +542,9 @@ Public Class DBFunction
 
             Dim selectCmd As SqlCeCommand = conn.CreateCommand
             selectCmd.CommandText = "SELECT * FROM timesheet where user_id = '" & user_id & "' and CONVERT(nvarchar(10),work_date,101)  = CONVERT(nvarchar(10),'" & caseTime & "',101)"
+
             adp.SelectCommand = selectCmd
+            ds.Clear()
             adp.Fill(ds)
 
             If ds.Tables.Item(0).Rows.Count < 1 Then
@@ -535,6 +568,44 @@ Public Class DBFunction
         Catch ex As Exception
             MsgBox(ex.Message)
             Return False
+
+        End Try
+
+    End Function
+
+
+
+    Public Shared Function getReportTimes(work_date As Date)
+        db_open()
+        Try
+
+            Dim sYear As String = work_date.Year.ToString()
+            Dim sMonth As String = work_date.Month.ToString().PadLeft(2, "0")
+            Dim sDay As String = work_date.Day.ToString().PadLeft(2, "0")
+
+            Dim caseTime As String = sMonth & "/" & sDay & "/" & sYear
+
+            Dim selectCmd As SqlCeCommand = conn.CreateCommand
+            selectCmd.CommandText = "SELECT l.user_id, l.name, t.time_in, t.time_out FROM login AS l INNER JOIN timesheet AS t ON l.user_id = t.user_id where CONVERT(nvarchar(10),work_date,101)  = CONVERT(nvarchar(10),'" & caseTime & "',101)"
+            adp.SelectCommand = selectCmd
+
+            ds.Clear()
+            adp.Fill(ds)
+
+            If ds.Tables.Item(0).Rows.Count < 1 Then
+
+                Return ""
+            Else
+
+                
+                Return ds
+            End If
+
+            db_close()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return ""
 
         End Try
 

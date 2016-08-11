@@ -17,17 +17,17 @@ Public Class AdminTimesheet
 
         Next
 
-        If getTime(userid, DateTime.Now.Date) Then
-            Dim idxtimeIn As Integer = timeIn.IndexOf(" ") + 1
+        'If getTime(userid, DateTime.Now.Date) Then
+        'Dim idxtimeIn As Integer = timeIn.IndexOf(" ") + 1
 
-            'lblTimeInData.Text = timeIn.Substring(idxtimeIn)
+        'lblTimeInData.Text = timeIn.Substring(idxtimeIn)
 
-            If timeOut <> vbNullString Then
-                ' Dim idxtimeOut As Integer = timeOut.IndexOf(" ") + 1
-                ' lblTimeOutData.Text = timeOut.Substring(idxtimeOut)
-                btnSignIn_Out.Enabled = False
-            End If
-        End If
+        ' If timeOut <> vbNullString Then
+        ' Dim idxtimeOut As Integer = timeOut.IndexOf(" ") + 1
+        ' lblTimeOutData.Text = timeOut.Substring(idxtimeOut)
+        '   btnSignIn_Out.Enabled = False
+        'End If
+        'End If
 
 
 
@@ -37,9 +37,10 @@ Public Class AdminTimesheet
 
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-        'Me.Close()
+        Admin.Show()
+        Me.Close()
         'ITT_Admin.frmLoginScreen.Close()
-        Application.Exit()
+        'Application.Exit()
 
     End Sub
 
@@ -61,7 +62,7 @@ Public Class AdminTimesheet
         ' getTime(userid, DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"))
         '  updateTime(userid, timeIn, DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"), workDate)
 
-        '  btnSignIn_Out.Enabled = False
+        btnSignIn_Out.Enabled = False
 
         '  End If
         Dim userData As String = cbxUsers.SelectedItem.ToString.Substring(cbxUsers.SelectedItem.ToString.IndexOf("(") + 1)

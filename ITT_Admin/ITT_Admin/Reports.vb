@@ -1,4 +1,5 @@
-﻿Imports System.Net.Mime.MediaTypeNames
+﻿Imports ITT_Admin.DBFunction
+Imports System.Net.Mime.MediaTypeNames
 Imports Excel = Microsoft.Office.Interop.Excel
 
 Public Class Reports
@@ -15,6 +16,8 @@ Public Class Reports
     End Sub
 
     Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        Dim currDate As String = dtpReport.Value
+
 
         Dim APP As New Excel.Application
         Dim worksheet As Excel.Worksheet
@@ -37,12 +40,28 @@ Public Class Reports
             Count:=1, _
             Type:=Excel.XlSheetType.xlWorksheet)
         'worksheet.Name = worksheet
-       ' End If
+        ' End Ifo
 
+        Dim reportData As DataSet = getReportTimes(currDate)
+        Dim count As Integer = 2
+        ' cbxUsers.Items.Add("--- New User ---")
+        worksheet.Cells(1, 1) = "Name"
+        worksheet.Cells(1, 2) = "UserId"
+        worksheet.Cells(1, 3) = "Time In"
+        worksheet.Cells(1, 4) = "Time Out"
+
+        For Each row As DataRow In reportData.Tables.Item(0).Rows
+            'Dim userData As String = getUserName(row.Item("user_Id").ToString)
+            'MsgBox(" (" & row.Item("user_Id").ToString & ") = " & row.Item("time_in").ToString & " to " & row.Item("time_out").ToString)
+            worksheet.Cells(count, 1) = row.Item("name").ToString
+            worksheet.Cells(count, 2) = row.Item("user_Id").ToString
+            worksheet.Cells(count, 3) = row.Item("time_in").ToString
+            worksheet.Cells(count, 4) = row.Item("time_out").ToString
+
+            count = count + 1
+
+        Next
         ' Add some data to individual cells.
-        worksheet.Cells(1, 1) = "A"
-        worksheet.Cells(1, 2) = "B"
-        worksheet.Cells(1, 3) = "C"
 
         ' Save the changes and close the workbook.
         workbook.Close(SaveChanges:=True)
@@ -59,5 +78,10 @@ Public Class Reports
 
     Private Sub txtFolder_TextChanged(sender As Object, e As EventArgs) Handles txtFolder.TextChanged
 
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        Admin.Show()
+        Me.Close()
     End Sub
 End Class

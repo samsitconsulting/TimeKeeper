@@ -22,23 +22,24 @@ Partial Class Reports
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.dtpReport = New System.Windows.Forms.DateTimePicker()
         Me.btnReport = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.txtFolder = New System.Windows.Forms.TextBox()
         Me.diaFolder = New System.Windows.Forms.SaveFileDialog()
+        Me.btnCancel = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'DateTimePicker1
+        'dtpReport
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(42, 12)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
-        Me.DateTimePicker1.TabIndex = 0
+        Me.dtpReport.Location = New System.Drawing.Point(42, 12)
+        Me.dtpReport.Name = "dtpReport"
+        Me.dtpReport.Size = New System.Drawing.Size(200, 20)
+        Me.dtpReport.TabIndex = 0
         '
         'btnReport
         '
-        Me.btnReport.Location = New System.Drawing.Point(101, 102)
+        Me.btnReport.Location = New System.Drawing.Point(53, 102)
         Me.btnReport.Name = "btnReport"
         Me.btnReport.Size = New System.Drawing.Size(75, 23)
         Me.btnReport.TabIndex = 1
@@ -61,25 +62,36 @@ Partial Class Reports
         Me.txtFolder.Size = New System.Drawing.Size(199, 20)
         Me.txtFolder.TabIndex = 3
         '
+        'btnCancel
+        '
+        Me.btnCancel.Location = New System.Drawing.Point(134, 102)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancel.TabIndex = 4
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = True
+        '
         'Reports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(289, 137)
         Me.ControlBox = False
+        Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.txtFolder)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.btnReport)
-        Me.Controls.Add(Me.DateTimePicker1)
+        Me.Controls.Add(Me.dtpReport)
         Me.Name = "Reports"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpReport As System.Windows.Forms.DateTimePicker
     Friend WithEvents btnReport As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents txtFolder As System.Windows.Forms.TextBox
     Friend WithEvents diaFolder As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents btnCancel As System.Windows.Forms.Button
 End Class

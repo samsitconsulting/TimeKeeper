@@ -21,6 +21,6 @@
 
     Private Sub btnGenerateRpt_Click(sender As Object, e As EventArgs) Handles btnGenerateRpt.Click
         Reports.Show()
-        'Me.Close()
+        Me.Close()
     End Sub
 End Class
