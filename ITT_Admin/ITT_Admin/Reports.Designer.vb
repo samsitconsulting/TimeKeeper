@@ -62,13 +62,18 @@ Partial Class Reports
         Me.txtFolder.Size = New System.Drawing.Size(199, 20)
         Me.txtFolder.TabIndex = 3
         '
+        'diaFolder
+        '
+        Me.diaFolder.Filter = """Excel files (*.xls)|*.xls|All files (*.*)|*.*"""
+        Me.diaFolder.InitialDirectory = """C:\Users\%username%\Desktop"""
+        '
         'btnCancel
         '
         Me.btnCancel.Location = New System.Drawing.Point(134, 102)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 23)
         Me.btnCancel.TabIndex = 4
-        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.Text = "Close"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'Reports

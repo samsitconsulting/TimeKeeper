@@ -9,6 +9,8 @@ Public Class Reports
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        diaFolder.Filter = "Excel files (*.xlsx)|*.xls|All files (*.*)|*.*"
+
         If diaFolder.ShowDialog = Windows.Forms.DialogResult.OK Then
             txtFolder.Text = diaFolder.FileName.ToString
 
@@ -73,7 +75,7 @@ Public Class Reports
 
 
         '  MsgBox(txtFolder.Text)
-        Me.Close()
+        'Me.Close()
     End Sub
 
     Private Sub txtFolder_TextChanged(sender As Object, e As EventArgs) Handles txtFolder.TextChanged
